@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Lhaiza de Souza Silva, estudante de Análise e Desenvolvimento de Sistemas.">
+    <meta name="keywords" content="Lhaiza de Souza Silva, portfólio, tecnologia, Análise e Desenvolvimento de Sistemas, SENAI">
+    <meta name="author" content="Lhaiza de Souza Silva">
+    <meta property="og:title" content="Portfólio - Lhaiza de Souza Silva">
+    <meta property="og:description" content="Conheça o portfólio de Lhaiza de Souza Silva, estudante de tecnologia com foco em inovação.">
+    <meta property="og:image" content="images/fotominha.jpg">
+    <meta property="og:url" content="https://lhaiza-portfolio.example.com">
+    <title>Portfólio - Lhaiza de Souza Silva</title>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom, #F4DEFA, #ffffff);
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #6B2D78, #B18FCF);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: #1a1a1a;
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a:focus {
+            color: #F4DEFA;
+            outline: 2px solid #F4DEFA;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #F4DEFA;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #6B2D78;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #F4DEFA;
+            padding-bottom: 0.5rem;
+        }
+        .contact, .info, .education, .experience, .courses, .extracurricular, .languages {
+            margin-bottom: 2rem;
+        }
+        .contact .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        .contact .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        .contact .contact-item:hover i {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+        .contact span {
+            color: #6B2D78;
+            font-weight: bold;
+        }
+        .contact .tooltip {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #6B2D78;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 10;
+        }
+        .contact .contact-item.active .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        .profile-pic {
+            display: block;
+            margin: 0 auto 1rem;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #F4DEFA;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        .profile-pic-error {
+            background: #ccc;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border: 3px solid #F4DEFA;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            color: #333;
+            text-align: center;
+        }
+        .card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .courses ul, .extracurricular ul, .languages ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        .courses li, .extracurricular li, .languages li {
+            margin: 0.5rem 0;
+            position: relative;
+        }
+        .courses li:before, .extracurricular li:before, .languages li:before {
+            content: '✓';
+            color: #F4DEFA;
+            position: absolute;
+            left: -1.5rem;
+            font-weight: bold;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: #6B2D78;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            font-size: 1rem;
+        }
+        .back-to-top.show {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #1a1a1a;
+            color: #fff;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            nav {
+                padding: 0.5rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            nav a {
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+            section {
+                margin: 1rem;
+                padding: 1.5rem;
+                font-size: 1.1rem;
+            }
+            .contact .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .contact .contact-item {
+                font-size: 1.1rem;
+                padding: 0.5rem;
+            }
+            .contact .tooltip {
+                top: -40px;
+                left: 0;
+                transform: none;
+                font-size: 0.8rem;
+                padding: 5px 10px;
+                max-width: 90vw;
+                white-space: normal;
+            }
+            .profile-pic, .profile-pic-error {
+                width: 100px;
+                height: 100px;
+            }
+            .back-to-top {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            section {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+            .contact .contact-item {
+                font-size: 1rem;
+            }
+            .profile-pic, .profile-pic-error {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lhaiza de Souza Silva</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#formacao">Formação</a></li>
+            <li><a href="#experiencia">Experiência</a></li>
+            <li><a href="#cursos">Cursos</a></li>
+            <li><a href="#extracurriculares">Extracurriculares</a></li>
+            <li><a href="#idiomas">Idiomas</a></li>
+        </ul>
+    </nav>
+    <section id="contato" class="contact">
+        <h2>Contato</h2>
+        <div class="contact-info">
+            <div class="contact-item" data-tooltip="Clique para copiar o e-mail">
+                <i class="fas fa-envelope" aria-label="Email"></i>
+                <span>lhaizasouza.149@icloud.com</span>
+                <div class="tooltip">Copiar e-mail</div>
+            </div>
+            <div class="contact-item" data-tooltip="Clique para copiar o número">
+                <i class="fas fa-phone" aria-label="Telefone"></i>
+                <span>(12) 99109-9110</span>
+                <div class="tooltip">Copiar número</div>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin" aria-label="LinkedIn"></i>
+                <span>Lhaiza Souza</span>
+            </div>
+            <div class="contact-item" data-tooltip="Endereço em Pindamonhangaba">
+                <i class="fas fa-map-marker-alt" aria-label="Endereço"></i>
+                <span>Moreira César, Pindamonhangaba/SP – CEP: 12440-520</span>
+                <div class="tooltip">Ver no mapa</div>
+            </div>
+        </div>
+    </section>
+    <section id="sobre" class="info">
+        <h2>Sobre Mim</h2>
+        <img src="images/fotominha.jpg" alt="Foto de perfil de Lhaiza de Souza Silva" class="profile-pic" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="profile-pic-error" style="display: none;">Imagem não carregada</div>
+        <div class="card">
+            <p>Sou estudante de Análise e Desenvolvimento de Sistemas no SENAI, com interesse em tecnologia e inovação. Gosto de explorar novas ideias e tecnologias, e busco oportunidades para aplicar meus conhecimentos e crescer na área de tecnologia.</p>
+        </div>
+    </section>
+    <section id="formacao" class="education">
+        <h2>Formação Acadêmica</h2>
+        <div class="card">
+            <p><strong>Graduação em Análise e Desenvolvimento de Sistemas (4º Semestre)</strong><br>
+            Escola SENAI Félix Guisard – Taubaté, SP<br>
+            Previsão de Conclusão: 12/2025</p>
+        </div>
+        <div class="card">
+            <p><strong>Ensino Técnico em Administração</strong><br>
+            ETEC João Gomes de Araújo – Pindamonhangaba, SP<br>
+            Concluído: 12/2023</p>
+        </div>
+        <div class="card">
+            <p><strong>Ensino Médio</strong><br>
+            Escola SESI – Pindamonhangaba, SP<br>
+            Concluído: 12/2023</p>
+        </div>
+    </section>
+    <section id="experiencia" class="experience">
+        <h2>Experiência Profissional</h2>
+        <div class="card">
+            <p><strong>Jovem Aprendiz – Apoio Administrativo na área de Manutenção</strong><br>
+            Euroquadros Indústria Importação e Exportação<br>
+            Carga horária: 4 horas por dia – 2025</p>
+        </div>
+        <div class="card">
+            <p><strong>Apoio Administrativo na Biblioteca Escolar</strong><br>
+            SESI Pindamonhangaba | Programa Passaporte para o Futuro<br>
+            Carga horária: 4 horas por dia – 2024</p>
+        </div>
+    </section>
+    <section id="cursos" class="courses">
+        <h2>Cursos Complementares</h2>
+        <div class="card">
+            <ul>
+                <li>Ética na IA – 4 horas | SENAI, Pindamonhangaba, SP</li>
+                <li>Power BI – 40 horas | SENAC, Pindamonhangaba, SP</li>
+                <li>Assistente de Segurança em Redes de Computadores – 290 horas | SENAC, Pindamonhangaba, SP</li>
+                <li>Preparação para o Mundo do Trabalho – 160 horas | SENAC, Pindamonhangaba, SP</li>
+                <li>Assistente de RH – 160 horas | SENAC, Pindamonhangaba, SP</li>
+                <li>Pacote Office 365 – 20 horas | SESI, Pindamonhangaba, SP</li>
+                <li>Word, PowerPoint – 100 horas | SINDIMETAL, Pindamonhangaba, SP</li>
+            </ul>
+        </div>
+    </section>
+    <section id="extracurriculares" class="extracurricular">
+        <h2>Experiências Extracurriculares</h2>
+        <div class="card">
+            <ul>
+                <li>Integrante da Equipe de Robótica – Tecno Pinda | SESI Pindamonhangaba<br>
+                FIRST LEGO League (FLL), Temporada Into Orbit – 2018/2019</li>
+            </ul>
+        </div>
+    </section>
+    <section id="idiomas" class="languages">
+        <h2>Idiomas</h2>
+        <div class="card">
+            <ul>
+                <li>Inglês – 3º Módulo | Revolution School, Pindamonhangaba, SP</li>
+            </ul>
+        </div>
+    </section>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top">Voltar ao Topo</button>
+    <footer>
+        <p>&copy; 2025 Lhaiza de Souza Silva. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            const button = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                button.classList.add('show');
+            } else {
+                button.classList.remove('show');
+            }
+        });
+
+        // Tooltip functionality for contact items
+        const contactItems = document.querySelectorAll('.contact-item[data-tooltip]');
+        contactItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                contactItems.forEach(i => i.classList.remove('active'));
+                // Add active class to clicked item
+                item.classList.add('active');
+                // Hide tooltip after 2 seconds
+                setTimeout(() => {
+                    item.classList.remove('active');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
